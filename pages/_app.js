@@ -1,7 +1,36 @@
-import '../styles/globals.css'
+import App from 'next/app';
+import Router from 'next/router';
+import React from 'react';
+import globalCSS from '../styles/globals.css';
+import { createGlobalStyle } from 'styled-components';
+import NProgress from 'nprogress';
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+const GlobalStyle = createGlobalStyle`
+  ${globalCSS}
+`;
+
+NProgress.configure({ showSpinner: false });
+
+Router.onRouteChangeStart = () => {
+	NProgress.start();
+};
+
+Router.onRouteChangeComplete = () => {
+	NProgress.done();
+};
+
+Router.onRouteChangeError = () => {
+	NProgress.done();
+};
+
+export default class MyApp extends App {
+	render() {
+		const { Component, pageProps } = this.props;
+		return (
+			<>
+				<Component {...pageProps} />
+				<GlobalStyle />
+			</>
+		);
+	}
 }
-
-export default MyApp
