@@ -9,7 +9,11 @@ const Section = styled('header')`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 4rem 0;
+	padding: 3rem 0;
+	position: sticky;
+	top: 0;
+	background: #fff;
+	z-index: 2;
 `;
 
 const Hamburger = styled(HamburgerMenu)`

@@ -5,9 +5,9 @@ const Title = styled('div')`
 	h1,
 	h2 {
 		padding: 0 1rem;
-		font-size: 1.8rem;
+		font-size: 1.9rem;
 		font-weight: 900;
-		width: 23rem;
+		width: 24rem;
 		text-align: right;
 		color: #fff;
 		background: #000;

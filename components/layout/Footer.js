@@ -5,7 +5,7 @@ const Section = styled('footer')`
 	background: #000;
 	color: #fff;
 	text-align: center;
-	padding: 1rem 0;
+	padding: 2rem 0;
 
 	p {
 		font-size: 1.4rem;

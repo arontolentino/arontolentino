@@ -9,7 +9,7 @@ const Wrapper = styled('div')`
 	padding: 0 2rem;
 `;
 
-export default ({ children }) => {
+const Layout = ({ children }) => {
 	return (
 		<>
 			<Wrapper>
@@ -21,3 +21,5 @@ export default ({ children }) => {
 		</>
 	);
 };
+
+export default Layout;
