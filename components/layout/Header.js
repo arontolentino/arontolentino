@@ -10,14 +10,6 @@ const Section = styled('header')`
 	justify-content: space-between;
 	align-items: center;
 	padding: 4rem 0;
-
-	@media (max-width: 768px) {
-		padding: 3rem 0;
-	}
-
-	@media (max-width: 450px) {
-		padding: 2rem 0;
-	}
 `;
 
 const Hamburger = styled(HamburgerMenu)`
@@ -30,7 +22,7 @@ const Nav = styled('nav')`
 	display: flex;
 	width: ${({ mobileMenu }) => (mobileMenu === true ? '100%' : 'auto')};
 	background: #fff;
-	transition: 0.3s all;
+	transition: 0.6s opacity;
 
 	@media (max-width: 900px) {
 		position: absolute;
@@ -38,11 +30,9 @@ const Nav = styled('nav')`
 		justify-content: center;
 		text-align: center;
 		border: 1rem solid #fff;
-		border-radius: 0.5rem;
 		box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.1);
 		margin-top: 2rem;
 		z-index: 2;
-		width: calc(100% - 4rem);
 		opacity: ${({ mobileMenu }) => (mobileMenu === true ? '1' : '0')};
 		visibility: ${({ mobileMenu }) =>
 			mobileMenu === true ? 'visibile' : 'hidden'};
@@ -62,7 +52,7 @@ const NavList = styled('ul')`
 
 		@media (max-width: 900px) {
 			flex-direction: column;
-			padding: 1rem 0;
+			padding: 1.5rem 0;
 			margin: 0;
 		}
 	}

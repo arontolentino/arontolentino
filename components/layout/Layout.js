@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Header from './Header';
 import Footer from './Footer';
 
-const Layout = styled('div')`
+const Wrapper = styled('div')`
 	max-width: ${({ fullWidth }) => (!fullWidth ? '1400px' : 'none')};
 	margin: 0 auto;
 	padding: 0 2rem;
@@ -11,12 +11,13 @@ const Layout = styled('div')`
 
 export default ({ children }) => {
 	return (
-		<Layout>
-			<Header />
+		<>
+			<Wrapper>
+				<Header />
 
-			<main>{children}</main>
-
+				<main>{children}</main>
+			</Wrapper>
 			<Footer />
-		</Layout>
+		</>
 	);
 };

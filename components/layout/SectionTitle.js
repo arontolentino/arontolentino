@@ -7,7 +7,7 @@ const Title = styled('div')`
 		padding: 0 1rem;
 		font-size: 1.8rem;
 		font-weight: 900;
-		width: 24rem;
+		width: 23rem;
 		text-align: right;
 		color: #fff;
 		background: #000;
