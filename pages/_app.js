@@ -1,4 +1,5 @@
 import App from 'next/app';
+import Head from 'next/head';
 import Router from 'next/router';
 import React from 'react';
 import globalCSS from '../styles/globals.css';
@@ -28,6 +29,9 @@ export default class MyApp extends App {
 		const { Component, pageProps } = this.props;
 		return (
 			<>
+				<Head>
+					<link rel="shortcut icon" href="/favicon.ico" />
+				</Head>
 				<Component {...pageProps} />
 				<GlobalStyle />
 			</>

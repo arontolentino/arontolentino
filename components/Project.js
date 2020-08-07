@@ -11,6 +11,7 @@ const Overlay = styled('div')`
 	left: 0;
 	right: 0;
 	opacity: 0;
+	transition: all 0.5s cubic-bezier(0.25, 1, 0.33, 1);
 
 	p {
 		font-size: 4rem;
@@ -29,12 +30,7 @@ const OverlayBG = styled('div')`
 	bottom: 0;
 	left: 0;
 	right: 0;
-	opacity: 0;
-	transition: all 0.5s cubic-bezier(0.25, 1, 0.33, 1);
-
-	:hover {
-		opacity: 0.7;
-	}
+	opacity: 0.7;
 `;
 
 const Card = styled('a')`

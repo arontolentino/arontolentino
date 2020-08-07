@@ -5,7 +5,7 @@ import Project from '../Project';
 
 const Section = styled('section')`
 	position: relative;
-	padding: 4rem 0;
+	padding: 4rem 0 2rem 0;
 `;
 
 const ProjectsContainer = styled('div')`

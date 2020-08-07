@@ -7,6 +7,10 @@ import Hero from '../components/home/Hero';
 const Home = () => {
 	return (
 		<Layout>
+			<Head>
+				<title>Home | Aron Tolentino</title>
+			</Head>
+
 			<Hero />
 			<Work />
 			<Blog />
