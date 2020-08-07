@@ -6,10 +6,8 @@ const Card = styled('a')`
 	margin-bottom: 5rem;
 
 	:hover {
-		h2 {
-			text-decoration: underline;
-			text-decoration-thickness: 4px;
-			text-underline-offset: 0.75rem;
+		span {
+			border-bottom: 5px solid #000;
 		}
 	}
 `;
@@ -31,6 +29,11 @@ const Content = styled('div')`
 	p {
 		font-size: 1.9rem;
 	}
+
+	span {
+		border-bottom: 5px solid transparent;
+		transition: all 0.5s cubic-bezier(0.25, 1, 0.33, 1);
+	}
 `;
 
 const Post = () => {
@@ -38,7 +41,11 @@ const Post = () => {
 		<Card href="/#">
 			<Image src="https://www.sparks-studio.com/cmsfiles/blog/Wheels/Listing_when_the_wheels.png" />
 			<Content>
-				<h2>What can charities learn from the peer–to–peer revolution?</h2>
+				<h2>
+					<span>
+						What can charities learn from the peer–to–peer revolution?
+					</span>
+				</h2>
 				<p>
 					Imagine your brand was hit by a sudden PR crisis, something that could
 					derail the whole business. How would you respond? Would you risk it
