@@ -53,12 +53,21 @@ const NavList = styled('ul')`
 		font-weight: 700;
 		margin-left: 3rem;
 		text-transform: uppercase;
+		border-bottom: 5px solid transparent;
+		transition: all 0.5s cubic-bezier(0.25, 1, 0.33, 1);
 
 		@media (max-width: 900px) {
 			flex-direction: column;
 			padding: 1.5rem 0;
 			margin: 0;
 		}
+
+		:hover {
+			border-bottom: 5px solid #000;
+		}
+	}
+
+	span {
 	}
 
 	@media (max-width: 900px) {
@@ -94,13 +103,13 @@ const Header = () => {
 					<Link href="/">
 						<a>About</a>
 					</Link>
-					<Link href="/resume">
+					<Link href="/">
 						<a>Work</a>
 					</Link>
-					<Link href="/projects">
+					<Link href="/">
 						<a>Blog</a>
 					</Link>
-					<Link href="contact">
+					<Link href="/">
 						<a>Contact</a>
 					</Link>
 				</NavList>
