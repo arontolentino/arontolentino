@@ -3,6 +3,7 @@ import Layout from '../components/layout/Layout';
 import Work from '../components/home/Work';
 import Blog from '../components/home/Blog';
 import Hero from '../components/home/Hero';
+import Newsletter from '../components/home/Newsletter';
 
 const Home = () => {
 	return (
@@ -14,6 +15,7 @@ const Home = () => {
 			<Hero />
 			<Work />
 			<Blog />
+			<Newsletter />
 		</Layout>
 	);
 };

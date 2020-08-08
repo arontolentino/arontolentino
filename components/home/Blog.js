@@ -2,9 +2,12 @@ import React from 'react';
 import SectionTitle from '../layout/SectionTitle';
 import styled from 'styled-components';
 import Post from '../Post';
+import ViewAllBtn from '../layout/ViewAllBtn';
 
 const Section = styled('section')`
 	position: relative;
+	display: flex;
+	flex-direction: column;
 	padding: 4rem 0;
 `;
 
@@ -27,6 +30,10 @@ const Blog = () => {
 				<Post />
 				<Post />
 			</PostsContainer>
+
+			<ViewAllBtn href="/blog">
+				<span>View more posts</span>
+			</ViewAllBtn>
 		</Section>
 	);
 };
