@@ -2,7 +2,7 @@ import React from 'react';
 import SectionTitle from '../layout/SectionTitle';
 import styled from 'styled-components';
 import Post from '../Post';
-import ViewAllBtn from '../layout/ViewAllBtn';
+import PrimaryBtn from '../layout/PrimaryBtn';
 
 const Section = styled('section')`
 	position: relative;
@@ -18,6 +18,11 @@ const PostsContainer = styled('div')`
 	margin-top: 4rem;
 `;
 
+const BtnContainer = styled('div')`
+	display: flex;
+	justify-content: flex-end;
+`;
+
 const Blog = () => {
 	return (
 		<Section>
@@ -31,9 +36,9 @@ const Blog = () => {
 				<Post />
 			</PostsContainer>
 
-			<ViewAllBtn href="/blog">
-				<span>View more posts</span>
-			</ViewAllBtn>
+			<BtnContainer>
+				<PrimaryBtn href="/blog">View more posts</PrimaryBtn>
+			</BtnContainer>
 		</Section>
 	);
 };

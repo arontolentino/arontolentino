@@ -33,6 +33,7 @@ const Content = styled('div')`
 	span {
 		border-bottom: 5px solid transparent;
 		transition: all 0.5s cubic-bezier(0.25, 1, 0.33, 1);
+		padding-bottom: 0.5rem;
 	}
 `;
 
