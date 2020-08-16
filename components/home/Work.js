@@ -8,7 +8,7 @@ const Section = styled('section')`
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	padding: 4rem 0 2rem 0;
+	padding: 10rem 0;
 `;
 
 const ProjectsContainer = styled('div')`
@@ -23,7 +23,7 @@ const BtnContainer = styled('div')`
 	justify-content: flex-end;
 `;
 
-const Work = () => {
+const Work = ({ projects }) => {
 	return (
 		<Section id="work">
 			<SectionTitle>
@@ -31,10 +31,9 @@ const Work = () => {
 			</SectionTitle>
 
 			<ProjectsContainer>
-				<Project />
-				<Project />
-				<Project />
-				<Project />
+				{projects.map(({ node: { project } }) => (
+					<Project project={project} />
+				))}
 			</ProjectsContainer>
 
 			<BtnContainer>

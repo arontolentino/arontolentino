@@ -8,7 +8,7 @@ const Section = styled('section')`
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	padding: 4rem 0;
+	padding: 10rem 0;
 `;
 
 const PostsContainer = styled('div')`

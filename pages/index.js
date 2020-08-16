@@ -1,11 +1,13 @@
 import Head from 'next/head';
+import { createApolloFetch } from 'apollo-fetch';
 import Layout from '../components/layout/Layout';
 import Work from '../components/home/Work';
 import Blog from '../components/home/Blog';
 import Hero from '../components/home/Hero';
 import Newsletter from '../components/home/Newsletter';
 
-const Home = () => {
+const Home = ({ projects }) => {
+	console.log(projects);
 	return (
 		<Layout>
 			<Head>
@@ -13,7 +15,7 @@ const Home = () => {
 			</Head>
 
 			<Hero />
-			<Work />
+			<Work projects={projects} />
 			<Blog />
 			<Newsletter />
 		</Layout>
@@ -21,3 +23,43 @@ const Home = () => {
 };
 
 export default Home;
+
+export async function getServerSideProps() {
+	try {
+		const uri = 'https://cms.arontolentino.com/graphql';
+
+		const query = `
+			query Home {
+				projects {
+					edges {
+						node {
+							project {
+								cardColor
+								category
+								description
+								fieldGroupName
+								subtitle
+								title
+								image {
+									mediaItemUrl
+								}
+							}
+						}
+					}
+				}
+			}
+		`;
+
+		const apolloFetch = createApolloFetch({ uri });
+
+		const res = await apolloFetch({ query });
+
+		return {
+			props: {
+				// home: res.data.pages.edges[0].node.home,
+				// skills: res.data.skills.edges,
+				projects: res.data.projects.edges,
+			},
+		};
+	} catch (err) {}
+}

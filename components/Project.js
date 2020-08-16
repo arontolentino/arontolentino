@@ -36,8 +36,8 @@ const OverlayBG = styled('div')`
 const Card = styled('a')`
 	position: relative;
 	flex: 0 0 48.5%;
-	padding-top: 6rem;
-	background: #39f;
+	padding-top: 7rem;
+	background: ${(props) => props.background};
 	color: #fff;
 	min-height: 60vh;
 	margin-bottom: 5rem;
@@ -51,10 +51,10 @@ const Content = styled('div')`
 	max-width: 80%;
 	margin: 0 auto;
 	text-align: center;
-	min-height: 275px;
+	min-height: 285px;
 
 	h6 {
-		font-size: 1.5rem;
+		font-size: 1.8rem;
 	}
 
 	h2 {
@@ -73,19 +73,28 @@ const Image = styled('img')`
 	display: block;
 `;
 
-const Project = () => {
+const Project = ({ project }) => {
+	const {
+		title,
+		subtitle,
+		cardColor,
+		category,
+		description,
+		image: { mediaItemUrl },
+	} = project;
+
 	return (
-		<Card href="#">
+		<Card href="#" background={cardColor}>
 			<Overlay>
 				<OverlayBG />
 				<p>View Project</p>
 			</Overlay>
 			<Content>
-				<h6>TMS Product</h6>
-				<h2>VirtualPostMail</h2>
-				<p>An Enterprise-Level WordPress Appointment Booking Plugin</p>
+				<h6>{category}</h6>
+				<h2>{title}</h2>
+				<p>{subtitle}</p>
 			</Content>
-			<Image src="https://tms-outsource.com/site/assets/files/1910/img-header-homepage_cf090fe02d8bd88b0d8d6fe9d0abe110_stuff_copy_mask.png" />
+			<Image src={mediaItemUrl} />
 		</Card>
 	);
 };

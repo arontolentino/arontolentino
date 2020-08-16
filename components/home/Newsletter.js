@@ -12,7 +12,7 @@ const NewsletterContainer = styled('div')`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin: 10rem 0;
+	margin: 15rem 0;
 `;
 
 const Content = styled('div')`
@@ -20,6 +20,7 @@ const Content = styled('div')`
 
 	h3 {
 		font-size: 6rem;
+		margin-bottom: 2rem;
 	}
 
 	p {
@@ -57,7 +58,9 @@ const Newsletter = () => {
 
 			<NewsletterContainer>
 				<Content>
-					<h3>Follow my story from junior to senior web developer.</h3>
+					<h3>
+						Get exclusive access to my web development mistakes and learnings.
+					</h3>
 					<p>
 						Lorem Ipsum is simply dummy text of the printing and typesetting
 						industry. Lorem Ipsum has been the industry's standard dummy text

@@ -7,7 +7,7 @@ const Section = styled('section')`
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
-	padding: 12rem 0 6rem 0;
+	padding: 15rem 0 8rem 0;
 `;
 
 const Content = styled('div')`
@@ -55,14 +55,14 @@ const Hero = () => {
 					<Typewriter
 						options={{
 							strings: [
-								'React.',
-								'Node.js.',
-								'Express.js.',
-								'MongoDB.',
-								'WordPress.',
-								'GraphQL.',
-								'Docker.',
-								'Azure.',
+								'React',
+								'Node.js',
+								'Express.js',
+								'MongoDB',
+								'WordPress',
+								'GraphQL',
+								'Docker',
+								'Azure',
 							],
 							autoStart: true,
 							loop: true,
