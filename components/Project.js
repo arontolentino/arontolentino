@@ -24,13 +24,13 @@ const Overlay = styled('div')`
 `;
 
 const OverlayBG = styled('div')`
-	background: #39f;
+	background: ${(props) => props.background};
 	position: absolute;
 	top: 0;
 	bottom: 0;
 	left: 0;
 	right: 0;
-	opacity: 0.7;
+	opacity: 0.8;
 `;
 
 const Card = styled('a')`
@@ -86,7 +86,7 @@ const Project = ({ project }) => {
 	return (
 		<Card href="#" background={cardColor}>
 			<Overlay>
-				<OverlayBG />
+				<OverlayBG background={cardColor} />
 				<p>View Project</p>
 			</Overlay>
 			<Content>
