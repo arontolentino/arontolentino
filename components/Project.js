@@ -51,7 +51,7 @@ const Content = styled('div')`
 	max-width: 80%;
 	margin: 0 auto;
 	text-align: center;
-	min-height: 285px;
+	min-height: 300px;
 
 	h6 {
 		font-size: 1.8rem;
