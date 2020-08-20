@@ -1,7 +1,17 @@
-import React from 'react';
+import Head from 'next/head';
+import Layout from '../components/layout/Layout';
+import PageHeader from '../components/layout/PageHeader';
 
 const Work = () => {
-	return <h1>Work</h1>;
+	return (
+		<Layout>
+			<Head>
+				<title>Work | Aron Tolentino</title>
+			</Head>
+
+			<PageHeader>Recent Work</PageHeader>
+		</Layout>
+	);
 };
 
 export default Work;

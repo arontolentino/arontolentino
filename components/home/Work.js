@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import SectionTitle from '../layout/SectionTitle';
-import Project from '../Project';
+import Project from './Project';
 import PrimaryBtn from '../layout/PrimaryBtn';
 
 const Section = styled('section')`

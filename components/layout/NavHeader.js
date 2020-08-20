@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import HamburgerMenu from 'react-hamburger-menu';
 import styled from 'styled-components';
@@ -9,7 +10,7 @@ const Section = styled('header')`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 3rem 0;
+	padding: 4rem 0;
 	position: sticky;
 	top: 0;
 	background: #fff;
@@ -47,36 +48,36 @@ const NavList = styled('ul')`
 	display: flex;
 	list-style: none;
 
-	a {
-		font-size: 1.8rem;
-		font-family: 'Montserrat', sans-serif;
-		font-weight: 700;
-		margin-left: 3rem;
-		text-transform: uppercase;
-		border-bottom: 5px solid transparent;
-		transition: all 0.5s cubic-bezier(0.25, 1, 0.33, 1);
-
-		@media (max-width: 900px) {
-			flex-direction: column;
-			padding: 1.5rem 0;
-			margin: 0;
-		}
-
-		:hover {
-			border-bottom: 5px solid #000;
-		}
-	}
-
-	span {
-	}
-
 	@media (max-width: 900px) {
 		flex-direction: column;
 	}
 `;
 
-const Header = () => {
+const NavLink = styled('a')`
+	font-size: 1.8rem;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 700;
+	margin-left: 3rem;
+	text-transform: uppercase;
+	/* border-bottom: 5px solid transparent; */
+	border-bottom: ${({ route, href }) =>
+		route === href ? '5px solid #000' : '5px solid transparent'};
+	transition: all 0.5s cubic-bezier(0.25, 1, 0.33, 1);
+
+	@media (max-width: 900px) {
+		flex-direction: column;
+		padding: 1.5rem 0;
+		margin: 0;
+	}
+
+	:hover {
+		border-bottom: 5px solid #000;
+	}
+`;
+
+const NavHeader = () => {
 	const [mobileMenu, setMobileMenu] = useState(false);
+	const router = useRouter();
 
 	return (
 		<Section>
@@ -100,17 +101,30 @@ const Header = () => {
 
 			<Nav mobileMenu={mobileMenu}>
 				<NavList>
-					<Link href="/">
-						<a>About</a>
+					<Link href="/" route={router.pathname}>
+						<NavLink href="/" route={router.pathname}>
+							Home
+						</NavLink>
 					</Link>
-					<Link href="/">
-						<a>Work</a>
+					<Link href="/about" route={router.pathname}>
+						<NavLink href="/about" route={router.pathname}>
+							About
+						</NavLink>
 					</Link>
-					<Link href="/">
-						<a>Blog</a>
+					<Link href="/work">
+						<NavLink href="/work" route={router.pathname}>
+							Work
+						</NavLink>
 					</Link>
-					<Link href="/">
-						<a>Contact</a>
+					<Link href="/blog">
+						<NavLink href="/blog" route={router.pathname}>
+							Blog
+						</NavLink>
+					</Link>
+					<Link href="/contact">
+						<NavLink href="/contact" route={router.pathname}>
+							Contact
+						</NavLink>
 					</Link>
 				</NavList>
 			</Nav>
@@ -118,4 +132,4 @@ const Header = () => {
 	);
 };
 
-export default Header;
+export default NavHeader;

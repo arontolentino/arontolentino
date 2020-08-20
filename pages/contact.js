@@ -1,7 +1,17 @@
-import React from 'react';
+import Head from 'next/head';
+import Layout from '../components/layout/Layout';
+import PageHeader from '../components/layout/PageHeader';
 
 const Contact = () => {
-	return <h1>Contact</h1>;
+	return (
+		<Layout>
+			<Head>
+				<title>Contact | Aron Tolentino</title>
+			</Head>
+
+			<PageHeader>Contact</PageHeader>
+		</Layout>
+	);
 };
 
 export default Contact;

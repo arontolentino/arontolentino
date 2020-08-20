@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Header from './Header';
+import NavHeader from './NavHeader';
 import Footer from './Footer';
 
 const Wrapper = styled('div')`
@@ -13,7 +13,7 @@ const Layout = ({ children }) => {
 	return (
 		<>
 			<Wrapper>
-				<Header />
+				<NavHeader />
 
 				<main>{children}</main>
 			</Wrapper>
