@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import SectionTitle from '../layout/SectionTitle';
-import Project from './Project';
+import ProjectCard from '../ProjectCard';
 import PrimaryBtn from '../layout/PrimaryBtn';
 
 const Section = styled('section')`
@@ -32,7 +32,7 @@ const Work = ({ projects }) => {
 
 			<ProjectsContainer>
 				{projects.map(({ node: { project } }) => (
-					<Project project={project} />
+					<ProjectCard project={project} />
 				))}
 			</ProjectsContainer>
 

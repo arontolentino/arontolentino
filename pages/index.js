@@ -56,8 +56,6 @@ export async function getServerSideProps() {
 
 		return {
 			props: {
-				// home: res.data.pages.edges[0].node.home,
-				// skills: res.data.skills.edges,
 				projects: res.data.projects.edges,
 			},
 		};

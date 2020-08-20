@@ -4,7 +4,7 @@ import NavHeader from './NavHeader';
 import Footer from './Footer';
 
 const Wrapper = styled('div')`
-	max-width: ${({ fullWidth }) => (!fullWidth ? '1600px' : 'none')};
+	max-width: ${({ fullWidth }) => (!fullWidth ? '1400px' : 'none')};
 	margin: 0 auto;
 	padding: 0 4rem;
 `;

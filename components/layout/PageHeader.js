@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Section = styled('header')`
-	padding: 5rem 0;
+	padding: 3rem 0;
 `;
 
 const Title = styled('h2')`

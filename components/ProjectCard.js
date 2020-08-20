@@ -34,10 +34,15 @@ const OverlayBG = styled('div')`
 `;
 
 const Card = styled('a')`
+	display: ${({ fullWidth }) => (fullWidth ? 'flex' : 'block')};
+	flex: ${({ fullWidth }) => (fullWidth ? '0 0 100%' : '0 0 48.5%')};
+	justify-content: ${({ fullWidth }) => (fullWidth ? 'space-between' : 'auto')};
+	align-items: ${({ fullWidth }) => (fullWidth ? 'center' : 'auto')};
 	position: relative;
-	flex: 0 0 48.5%;
 	padding-top: 7rem;
-	background: ${(props) => props.background};
+	padding: ${({ fullWidth }) => (fullWidth ? '5rem' : '7rem 0 0 0')};
+
+	background: ${({ background }) => background};
 	color: #fff;
 	min-height: 60vh;
 	margin-bottom: 5rem;
@@ -48,9 +53,13 @@ const Card = styled('a')`
 `;
 
 const Content = styled('div')`
+	display: ${({ fullWidth }) => (fullWidth ? 'flex' : 'block')};
+	flex-direction: ${({ fullWidth }) => (fullWidth ? 'column' : 'auto')};
+	justify-content: ${({ fullWidth }) => (fullWidth ? 'center' : 'auto')};
+	flex: ${({ fullWidth }) => (fullWidth ? '0 0 42%' : 'auto')};
+	text-align: ${({ fullWidth }) => (fullWidth ? 'left' : 'center')};
 	max-width: 80%;
 	margin: 0 auto;
-	text-align: center;
 	min-height: 300px;
 
 	h6 {
@@ -67,13 +76,15 @@ const Content = styled('div')`
 `;
 
 const Image = styled('img')`
+	flex: ${({ fullWidth }) => (fullWidth ? '0 0 55%' : 'auto')};
+
 	max-width: 100%;
 	height: auto;
 	box-sizing: border-box;
 	display: block;
 `;
 
-const Project = ({ project }) => {
+const Project = ({ project, fullWidth }) => {
 	const {
 		title,
 		subtitle,
@@ -84,17 +95,17 @@ const Project = ({ project }) => {
 	} = project;
 
 	return (
-		<Card href="#" background={cardColor}>
+		<Card href="#" background={cardColor} fullWidth={fullWidth}>
 			<Overlay>
 				<OverlayBG background={cardColor} />
 				<p>View Project</p>
 			</Overlay>
-			<Content>
+			<Content fullWidth={fullWidth}>
 				<h6>{category}</h6>
 				<h2>{title}</h2>
 				<p>{subtitle}</p>
 			</Content>
-			<Image src={mediaItemUrl} />
+			<Image src={mediaItemUrl} fullWidth={fullWidth} />
 		</Card>
 	);
 };
