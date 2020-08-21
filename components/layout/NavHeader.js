@@ -10,7 +10,7 @@ const Section = styled('header')`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 4rem 0;
+	padding: 3rem 0;
 	position: sticky;
 	top: 0;
 	background: #fff;
@@ -106,11 +106,11 @@ const NavHeader = () => {
 							Home
 						</NavLink>
 					</Link>
-					<Link href="/about" route={router.pathname}>
+					{/* <Link href="/about" route={router.pathname}>
 						<NavLink href="/about" route={router.pathname}>
 							About
 						</NavLink>
-					</Link>
+					</Link> */}
 					<Link href="/work">
 						<NavLink href="/work" route={router.pathname}>
 							Work
@@ -121,11 +121,11 @@ const NavHeader = () => {
 							Blog
 						</NavLink>
 					</Link>
-					<Link href="/contact">
+					{/* <Link href="/contact">
 						<NavLink href="/contact" route={router.pathname}>
 							Contact
 						</NavLink>
-					</Link>
+					</Link> */}
 				</NavList>
 			</Nav>
 		</Section>

@@ -19,7 +19,7 @@ const Work = ({ projects }) => {
 				<title>Work | Aron Tolentino</title>
 			</Head>
 
-			<PageHeader>Recent Work</PageHeader>
+			{/* <PageHeader>Recent Work</PageHeader> */}
 
 			<ProjectsContainer>
 				{projects.map(({ node: { project } }) => (
