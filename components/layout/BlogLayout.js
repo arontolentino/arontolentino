@@ -17,7 +17,8 @@ const Main = styled('main')`
 
 const Article = styled('article')`
 	flex-grow: 1;
-	margin-left: 4rem;
+	/* margin-left: 4rem; */
+	padding: 0 4rem;
 `;
 
 const BlogLayout = ({ children }) => {

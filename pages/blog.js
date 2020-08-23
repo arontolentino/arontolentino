@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import styled from 'styled-components';
+import { createApolloFetch } from 'apollo-fetch';
 import BlogLayout from '../components/layout/BlogLayout';
 
 const ArticleList = styled('ol')`
@@ -61,7 +62,8 @@ const Tag = styled('a')`
 	padding: 1.5rem 2rem;
 `;
 
-const Blog = () => {
+const Blog = ({ posts }) => {
+	console.log(posts);
 	return (
 		<BlogLayout>
 			<Head>
@@ -69,68 +71,75 @@ const Blog = () => {
 			</Head>
 
 			<ArticleList>
-				<Article>
-					<Content href="#">
-						<h3>
-							<span>How to create your first VPS on DigitalOcean</span>
-						</h3>
-						<p>A complete guide from zero to having a DigitalOcean VPS</p>
-					</Content>
-					<Meta>
-						<Date>August 20, 2020</Date>
-						<div>
-							<Tag href="#">Cloud</Tag>
-						</div>
-					</Meta>
-				</Article>
+				{posts.map(({ node }) => {
+					const {
+						title,
+						summary: { summary },
+						tags,
+						slug,
+					} = node;
 
-				<Article>
-					<Content href="#">
-						<h3>
-							<span>How to create your first VPS on DigitalOcean</span>
-						</h3>
-						<p>A complete guide from zero to having a DigitalOcean VPS</p>
-					</Content>
-					<Meta>
-						<Date>August 20, 2020</Date>
-						<div>
-							<Tag href="#">Cloud</Tag>
-						</div>
-					</Meta>
-				</Article>
-
-				<Article>
-					<Content href="#">
-						<h3>
-							<span>How to create your first VPS on DigitalOcean</span>
-						</h3>
-						<p>A complete guide from zero to having a DigitalOcean VPS</p>
-					</Content>
-					<Meta>
-						<Date>August 20, 2020</Date>
-						<div>
-							<Tag href="#">Cloud</Tag>
-						</div>
-					</Meta>
-				</Article>
-
-				<Article>
-					<Content href="#">
-						<h3>
-							<span>How to create your first VPS on DigitalOcean</span>
-						</h3>
-						<p>A complete guide from zero to having a DigitalOcean VPS</p>
-					</Content>
-					<Meta>
-						<Date>August 20, 2020</Date>
-						<div>
-							<Tag href="#">Cloud</Tag>
-						</div>
-					</Meta>
-				</Article>
+					return (
+						<Article>
+							<Content href={`blog/${slug}`}>
+								<h3>{title}</h3>
+								<p>{summary}</p>
+							</Content>
+							<Meta>
+								<Date>August 20, 2020</Date>
+								<div>
+									<Tag href="#">{tags.edges[0].node.name}</Tag>
+								</div>
+							</Meta>
+						</Article>
+					);
+				})}
 			</ArticleList>
 		</BlogLayout>
 	);
 };
 
 export default Blog;
+
+export async function getServerSideProps() {
+	try {
+		const uri = 'https://cms.arontolentino.com/graphql';
+
+		const query = `
+			query Posts {
+				posts {
+					edges {
+						node {
+							title
+							slug
+							content
+							summary {
+								summary
+							}
+							date
+							tags {
+								edges {
+									node {
+										name
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		`;
+
+		const apolloFetch = createApolloFetch({ uri });
+
+		const res = await apolloFetch({ query });
+
+		return {
+			props: {
+				posts: res.data.posts.edges,
+			},
+		};
+	} catch (err) {
+		console.log(err.message);
+	}
+}
