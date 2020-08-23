@@ -4,25 +4,25 @@ import Router from 'next/router';
 import React from 'react';
 import globalCSS from '../styles/globals.css';
 import { createGlobalStyle } from 'styled-components';
-import NProgress from 'nprogress';
+// import NProgress from 'nprogress';
 
 const GlobalStyle = createGlobalStyle`
   ${globalCSS}
 `;
 
-NProgress.configure({ showSpinner: false });
+// NProgress.configure({ showSpinner: false });
 
-Router.onRouteChangeStart = () => {
-	NProgress.start();
-};
+// Router.onRouteChangeStart = () => {
+// 	NProgress.start();
+// };
 
-Router.onRouteChangeComplete = () => {
-	NProgress.done();
-};
+// Router.onRouteChangeComplete = () => {
+// 	NProgress.done();
+// };
 
-Router.onRouteChangeError = () => {
-	NProgress.done();
-};
+// Router.onRouteChangeError = () => {
+// 	NProgress.done();
+// };
 
 export default class MyApp extends App {
 	render() {
