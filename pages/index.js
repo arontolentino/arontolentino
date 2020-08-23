@@ -24,7 +24,7 @@ const Home = ({ projects }) => {
 
 export default Home;
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
 	try {
 		const uri = 'https://cms.arontolentino.com/graphql';
 
