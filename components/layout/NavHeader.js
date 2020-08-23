@@ -27,7 +27,7 @@ const Nav = styled('nav')`
 	display: flex;
 	width: ${({ mobileMenu }) => (mobileMenu === true ? '100%' : 'auto')};
 	background: #fff;
-	transition: 0.6s opacity;
+	/* transition: 0.6s opacity; */
 
 	@media (max-width: 900px) {
 		position: absolute;
