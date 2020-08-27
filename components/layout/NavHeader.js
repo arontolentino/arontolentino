@@ -101,31 +101,15 @@ const NavHeader = () => {
 
 			<Nav mobileMenu={mobileMenu}>
 				<NavList>
-					<Link href="/" route={router.pathname}>
-						<NavLink href="/" route={router.pathname}>
-							Home
-						</NavLink>
-					</Link>
-					{/* <Link href="/about" route={router.pathname}>
-						<NavLink href="/about" route={router.pathname}>
-							About
-						</NavLink>
-					</Link> */}
-					<Link href="/work">
-						<NavLink href="/work" route={router.pathname}>
-							Work
-						</NavLink>
-					</Link>
-					<Link href="/blog">
-						<NavLink href="/blog" route={router.pathname}>
-							Blog
-						</NavLink>
-					</Link>
-					{/* <Link href="/contact">
-						<NavLink href="/contact" route={router.pathname}>
-							Contact
-						</NavLink>
-					</Link> */}
+					<NavLink href="/" route={router.pathname}>
+						Home
+					</NavLink>
+					<NavLink href="/work" route={router.pathname}>
+						Work
+					</NavLink>
+					<NavLink href="/blog" route={router.pathname}>
+						Blog
+					</NavLink>
 				</NavList>
 			</Nav>
 		</Section>
