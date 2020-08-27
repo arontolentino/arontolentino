@@ -38,7 +38,7 @@ const Content = styled('div')`
 	}
 `;
 
-const Post = ({ post }) => {
+const Post = ({ post, tags }) => {
 	const {
 		title,
 		content,
@@ -47,7 +47,7 @@ const Post = ({ post }) => {
 	} = post;
 
 	return (
-		<BlogLayout>
+		<BlogLayout tags={tags}>
 			<Head>
 				<title>Blog | Aron Tolentino</title>
 			</Head>
@@ -110,7 +110,15 @@ export async function getStaticProps({ params }) {
             summary
           }
           date
-        }
+				}
+				tags {
+					edges {
+						node {
+							name
+							slug
+						}
+					}
+				}
       }
 		`;
 
@@ -121,6 +129,7 @@ export async function getStaticProps({ params }) {
 		return {
 			props: {
 				post: res.data.postBy,
+				tags: res.data.tags.edges,
 			},
 		};
 	} catch (err) {

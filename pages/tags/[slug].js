@@ -1,7 +1,17 @@
+import React from 'react';
 import Head from 'next/head';
-import styled from 'styled-components';
+import Moment from 'react-moment';
 import { createApolloFetch } from 'apollo-fetch';
-import BlogLayout from '../components/layout/BlogLayout';
+import styled from 'styled-components';
+
+import BlogLayout from '../../components/layout/BlogLayout';
+
+const TagTitle = styled('h1')`
+	font-size: 3.5rem;
+	font-weight: 500;
+	margin-bottom: 3rem;
+	padding-left: 1.2rem;
+`;
 
 const ArticleList = styled('ol')`
 	list-style: none;
@@ -62,16 +72,15 @@ const Tag = styled('a')`
 	padding: 1.5rem 2rem;
 `;
 
-const Blog = ({ posts, tags }) => {
-	console.log(posts);
+const Post = ({ tag, tags }) => {
+	const { name, posts } = tag;
+
 	return (
 		<BlogLayout tags={tags}>
-			<Head>
-				<title>Blog | Aron Tolentino</title>
-			</Head>
+			<TagTitle>All the {name} posts:</TagTitle>
 
 			<ArticleList>
-				{posts.map(({ node }) => {
+				{posts.edges.map(({ node }) => {
 					const {
 						title,
 						summary: { summary },
@@ -81,7 +90,7 @@ const Blog = ({ posts, tags }) => {
 
 					return (
 						<Article>
-							<Content href={`blog/${slug}`}>
+							<Content href={`/blog/${slug}`}>
 								<h3>{title}</h3>
 								<p>{summary}</p>
 							</Content>
@@ -101,29 +110,65 @@ const Blog = ({ posts, tags }) => {
 	);
 };
 
-export default Blog;
+export default Post;
 
-export async function getStaticProps() {
+export async function getStaticPaths() {
 	try {
 		const uri = 'https://cms.arontolentino.com/graphql';
 
 		const query = `
-			query Posts {
-				posts {
-					edges {
-						node {
-							title
-							slug
-							content
-							summary {
-								summary
-							}
-							date
-							tags {
-								edges {
-									node {
-										name
-										slug
+      query Tags {
+        tags {
+          edges {
+            node {
+              slug
+            }
+          }
+        }
+      }
+		`;
+
+		const apolloFetch = createApolloFetch({ uri });
+
+		const res = await apolloFetch({ query });
+
+		const tags = await res.data.tags.edges;
+
+		const paths = tags.map((tag) => {
+			return `/tags/${tag.node.slug}`;
+		});
+
+		return { paths, fallback: false };
+	} catch (err) {
+		console.log(err.message);
+	}
+}
+
+export async function getStaticProps({ params }) {
+	try {
+		const uri = 'https://cms.arontolentino.com/graphql';
+
+		const query = `
+			query Tags {
+				tag(id: "${params.slug}", idType: SLUG) {
+					name
+					posts {
+						edges {
+							node {
+								id
+								title
+								slug
+								content
+								summary {
+									summary
+								}
+								date
+								tags {
+									edges {
+										node {
+											name
+											slug
+										}
 									}
 								}
 							}
@@ -139,6 +184,7 @@ export async function getStaticProps() {
 					}
 				}
 			}
+		
 		`;
 
 		const apolloFetch = createApolloFetch({ uri });
@@ -147,7 +193,7 @@ export async function getStaticProps() {
 
 		return {
 			props: {
-				posts: res.data.posts.edges,
+				tag: res.data.tag,
 				tags: res.data.tags.edges,
 			},
 		};

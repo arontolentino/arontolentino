@@ -21,14 +21,14 @@ const Article = styled('article')`
 	padding: 0 4rem;
 `;
 
-const BlogLayout = ({ children }) => {
+const BlogLayout = ({ children, tags }) => {
 	return (
 		<>
 			<Wrapper>
 				<NavHeader />
 
 				<Main>
-					<Sidebar />
+					<Sidebar tags={tags} />
 					<Article>{children}</Article>
 				</Main>
 			</Wrapper>
@@ -38,3 +38,34 @@ const BlogLayout = ({ children }) => {
 };
 
 export default BlogLayout;
+
+export async function getStaticProps() {
+	try {
+		const uri = 'https://cms.arontolentino.com/graphql';
+
+		const query = `
+			query Tags {
+				tags {
+					edges {
+						node {
+							name
+							slug
+						}
+					}
+				}
+			}
+		`;
+
+		const apolloFetch = createApolloFetch({ uri });
+
+		const res = await apolloFetch({ query });
+
+		return {
+			props: {
+				tags: res.data.tags.edges,
+			},
+		};
+	} catch (err) {
+		console.log(err.message);
+	}
+}

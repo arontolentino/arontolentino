@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { createApolloFetch } from 'apollo-fetch';
 
 const Aside = styled('aside')`
 	flex: 0 0 24rem;
@@ -28,7 +29,7 @@ const Category = styled('li')`
 	}
 `;
 
-const Sidebar = ({ children }) => {
+const Sidebar = ({ tags }) => {
 	return (
 		<Aside>
 			<h3>Intro</h3>
@@ -36,21 +37,12 @@ const Sidebar = ({ children }) => {
 
 			<h3>Categories</h3>
 			<Categories>
-				<Category>
-					<a href="#">CSS</a>
-				</Category>
-				<Category>
-					<a href="#">Docker</a>
-				</Category>
-				<Category>
-					<a href="#">GraphQL</a>
-				</Category>
-				<Category>
-					<a href="#">JavaScript</a>
-				</Category>
-				<Category>
-					<a href="#">HTML</a>
-				</Category>
+				{tags &&
+					tags.map(({ node: { name, slug } }) => (
+						<Category>
+							<a href={`/tags/${slug}`}>{name}</a>
+						</Category>
+					))}
 			</Categories>
 
 			<h3>Newsletter</h3>
