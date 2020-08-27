@@ -4,7 +4,7 @@ import Moment from 'react-moment';
 import { createApolloFetch } from 'apollo-fetch';
 import styled from 'styled-components';
 
-import BlogLayout from '../../components/layout/BlogLayout';
+import BlogLayout from '../../../components/layout/BlogLayout';
 
 const TagTitle = styled('h1')`
 	font-size: 3.5rem;
@@ -97,7 +97,7 @@ const Post = ({ tag, tags }) => {
 							<Meta>
 								<Date>August 20, 2020</Date>
 								<div>
-									<Tag href={`/tags/${tags.edges[0].node.slug}`}>
+									<Tag href={`/blog/tags/${tags.edges[0].node.slug}`}>
 										{tags.edges[0].node.name}
 									</Tag>
 								</div>
@@ -135,7 +135,7 @@ export async function getStaticPaths() {
 		const tags = await res.data.tags.edges;
 
 		const paths = tags.map((tag) => {
-			return `/tags/${tag.node.slug}`;
+			return `/blog/tags/${tag.node.slug}`;
 		});
 
 		return { paths, fallback: false };
