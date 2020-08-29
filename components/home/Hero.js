@@ -7,7 +7,7 @@ const Section = styled('section')`
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
-	padding: 15rem 0 8rem 0;
+	padding: 15rem 0 18rem 0;
 `;
 
 const Content = styled('div')`

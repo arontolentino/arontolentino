@@ -8,7 +8,7 @@ const Section = styled('section')`
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	padding: 10rem 0;
+	margin-bottom: 10rem;
 `;
 
 const ProjectsContainer = styled('div')`

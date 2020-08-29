@@ -6,7 +6,7 @@ import Blog from '../components/home/Blog';
 import Hero from '../components/home/Hero';
 import Newsletter from '../components/home/Newsletter';
 
-const Home = ({ projects }) => {
+const Home = ({ projects, posts }) => {
 	console.log(projects);
 	return (
 		<Layout>
@@ -16,7 +16,7 @@ const Home = ({ projects }) => {
 
 			<Hero />
 			<Work projects={projects} />
-			<Blog />
+			<Blog posts={posts} />
 			<Newsletter />
 		</Layout>
 	);
@@ -47,6 +47,27 @@ export async function getStaticProps() {
 						}
 					}
 				}
+				posts(first: 10) {
+					edges {
+						node {
+							title
+							slug
+							content
+							summary {
+								summary
+							}
+							date
+							tags {
+								edges {
+									node {
+										name
+										slug
+									}
+								}
+							}
+						}
+					}
+				}
 			}
 		`;
 
@@ -57,6 +78,7 @@ export async function getStaticProps() {
 		return {
 			props: {
 				projects: res.data.projects.edges,
+				posts: res.data.posts.edges,
 			},
 		};
 	} catch (err) {}
