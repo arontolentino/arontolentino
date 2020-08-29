@@ -27,7 +27,6 @@ const Nav = styled('nav')`
 	display: flex;
 	width: ${({ mobileMenu }) => (mobileMenu === true ? '100%' : 'auto')};
 	background: #fff;
-	/* transition: 0.6s opacity; */
 
 	@media (max-width: 900px) {
 		position: absolute;
@@ -59,9 +58,14 @@ const NavLink = styled('a')`
 	font-weight: 700;
 	margin-left: 3rem;
 	text-transform: uppercase;
-	/* border-bottom: 5px solid transparent; */
 	border-bottom: ${({ route, href }) =>
-		route === href ? '5px solid #000' : '5px solid transparent'};
+		href === route
+			? '5px solid #000'
+			: href === '/'
+			? '5px solid transparent'
+			: route.includes(href)
+			? '5px solid #000'
+			: '5px solid transparent'};
 	transition: all 0.5s cubic-bezier(0.25, 1, 0.33, 1);
 
 	@media (max-width: 900px) {

@@ -40,7 +40,7 @@ const Sidebar = ({ tags }) => {
 				{tags &&
 					tags.map(({ node: { name, slug } }) => (
 						<Category>
-							<a href={`/tags/${slug}`}>{name}</a>
+							<a href={`/blog/tags/${slug}`}>{name}</a>
 						</Category>
 					))}
 			</Categories>

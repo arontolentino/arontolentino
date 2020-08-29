@@ -88,7 +88,7 @@ const Blog = ({ posts, tags }) => {
 							<Meta>
 								<Date>August 20, 2020</Date>
 								<div>
-									<Tag href={`/tags/${tags.edges[0].node.slug}`}>
+									<Tag href={`/blog/tags/${tags.edges[0].node.slug}`}>
 										{tags.edges[0].node.name}
 									</Tag>
 								</div>
