@@ -1,49 +1,54 @@
-import React from 'react';
-import styled from 'styled-components';
-import NavHeader from './NavHeader';
-import Footer from './Footer';
-import Sidebar from './Sidebar';
+import React from "react";
+import styled from "styled-components";
+import NavHeader from "./NavHeader";
+import Footer from "./Footer";
+import Sidebar from "./Sidebar";
 
-const Wrapper = styled('div')`
-	max-width: ${({ fullWidth }) => (!fullWidth ? '1400px' : 'none')};
-	margin: 0 auto;
-	padding: 0 4rem;
+const Wrapper = styled("div")`
+  max-width: ${({ fullWidth }) => (!fullWidth ? "1400px" : "none")};
+  margin: 0 auto;
+  padding: 0 4rem;
 `;
 
-const Main = styled('main')`
-	display: flex;
-	padding: 4rem 0;
+const Main = styled("main")`
+  display: flex;
+  padding: 4rem 0;
+
+  @media only screen and (max-width: 1000px) {
+    flex-direction: column-reverse;
+  }
 `;
 
-const Article = styled('article')`
-	flex-grow: 1;
-	/* margin-left: 4rem; */
-	padding: 0 4rem;
+const Article = styled("article")`
+  flex-grow: 1;
+  /* margin-left: 4rem; */
+  padding: 0 4rem;
+  margin-bottom: 3rem;
 `;
 
 const BlogLayout = ({ children, tags }) => {
-	return (
-		<>
-			<Wrapper>
-				<NavHeader />
+  return (
+    <>
+      <Wrapper>
+        <NavHeader />
 
-				<Main>
-					<Sidebar tags={tags} />
-					<Article>{children}</Article>
-				</Main>
-			</Wrapper>
-			<Footer />
-		</>
-	);
+        <Main>
+          <Sidebar tags={tags} />
+          <Article>{children}</Article>
+        </Main>
+      </Wrapper>
+      <Footer />
+    </>
+  );
 };
 
 export default BlogLayout;
 
 export async function getStaticProps() {
-	try {
-		const uri = 'https://cms.arontolentino.com/graphql';
+  try {
+    const uri = "https://cms.arontolentino.com/graphql";
 
-		const query = `
+    const query = `
 			query Tags {
 				tags {
 					edges {
@@ -56,16 +61,16 @@ export async function getStaticProps() {
 			}
 		`;
 
-		const apolloFetch = createApolloFetch({ uri });
+    const apolloFetch = createApolloFetch({ uri });
 
-		const res = await apolloFetch({ query });
+    const res = await apolloFetch({ query });
 
-		return {
-			props: {
-				tags: res.data.tags.edges,
-			},
-		};
-	} catch (err) {
-		console.log(err.message);
-	}
+    return {
+      props: {
+        tags: res.data.tags.edges,
+      },
+    };
+  } catch (err) {
+    console.log(err.message);
+  }
 }
