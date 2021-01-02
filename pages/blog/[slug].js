@@ -1,29 +1,29 @@
-import React from "react";
-import Head from "next/head";
-import Moment from "react-moment";
-import { createApolloFetch } from "apollo-fetch";
-import styled from "styled-components";
+import React from 'react';
+import Head from 'next/head';
+import Moment from 'react-moment';
+import { createApolloFetch } from 'apollo-fetch';
+import styled from 'styled-components';
 
-import BlogLayout from "../../components/layout/BlogLayout";
+import BlogLayout from '../../components/layout/BlogLayout';
 
-const Title = styled("h1")`
+const Title = styled('h1')`
   font-size: 5rem;
   font-weight: 700;
   margin-bottom: 1rem;
 `;
 
-const Summary = styled("h2")`
+const Summary = styled('h2')`
   margin-bottom: 2rem;
 `;
 
-const Date = styled("p")`
-  font-family: "Montserrat", sans-serif;
+const Date = styled('p')`
+  font-family: 'Montserrat', sans-serif;
   margin-bottom: 4rem;
   padding-bottom: 4rem;
   border-bottom: 0.5px solid #000;
 `;
 
-const Content = styled("div")`
+const Content = styled('div')`
   border-bottom: 0.5px solid #000;
   p {
     font-size: 2rem;
@@ -67,7 +67,7 @@ export default Post;
 
 export async function getStaticPaths() {
   try {
-    const uri = "https://cms.arontolentino.com/graphql";
+    const uri = 'https://cms.arontolentino.com/graphql';
 
     const query = `
       query PostSlugs {
@@ -99,7 +99,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   try {
-    const uri = "https://cms.arontolentino.com/graphql";
+    const uri = 'https://cms.arontolentino.com/graphql';
 
     const query = `
       query Post {
@@ -116,7 +116,11 @@ export async function getStaticProps({ params }) {
 					edges {
 						node {
 							name
-							slug
+              slug
+              color {
+                text
+                background
+              }
 						}
 					}
 				}

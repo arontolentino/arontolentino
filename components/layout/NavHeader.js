@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { useRouter } from "next/router";
-import Link from "next/link";
-import HamburgerMenu from "react-hamburger-menu";
-import styled from "styled-components";
-import SectionTitle from "../layout/SectionTitle";
+import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import HamburgerMenu from 'react-hamburger-menu';
+import styled from 'styled-components';
+import SectionTitle from '../layout/SectionTitle';
 
-const Section = styled("header")`
+const Section = styled('header')`
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -23,9 +23,9 @@ const Hamburger = styled(HamburgerMenu)`
   }
 `;
 
-const Nav = styled("nav")`
+const Nav = styled('nav')`
   display: flex;
-  width: ${({ mobileMenu }) => (mobileMenu === true ? "100%" : "auto")};
+  width: ${({ mobileMenu }) => (mobileMenu === true ? '100%' : 'auto')};
   background: #fff;
 
   @media (max-width: 900px) {
@@ -37,13 +37,13 @@ const Nav = styled("nav")`
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.1);
     margin-top: 2rem;
     z-index: 2;
-    opacity: ${({ mobileMenu }) => (mobileMenu === true ? "1" : "0")};
+    opacity: ${({ mobileMenu }) => (mobileMenu === true ? '1' : '0')};
     visibility: ${({ mobileMenu }) =>
-      mobileMenu === true ? "visibile" : "hidden"};
+      mobileMenu === true ? 'visibile' : 'hidden'};
   }
 `;
 
-const NavList = styled("ul")`
+const NavList = styled('ul')`
   display: flex;
   list-style: none;
 
@@ -52,20 +52,20 @@ const NavList = styled("ul")`
   }
 `;
 
-const NavLink = styled("a")`
+const NavLink = styled('a')`
   font-size: 1.8rem;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   margin-left: 3rem;
   text-transform: uppercase;
   border-bottom: ${({ route, href }) =>
     href === route
-      ? "5px solid #000"
-      : href === "/"
-      ? "5px solid transparent"
+      ? '5px solid #000'
+      : href === '/'
+      ? '5px solid transparent'
       : route.includes(href)
-      ? "5px solid #000"
-      : "5px solid transparent"};
+      ? '5px solid #000'
+      : '5px solid transparent'};
   transition: all 0.5s cubic-bezier(0.25, 1, 0.33, 1);
 
   @media (max-width: 900px) {
@@ -108,15 +108,15 @@ const NavHeader = () => {
           <NavLink href="/" route={router.pathname}>
             Home
           </NavLink>
-          <NavLink href="/work" route={router.pathname}>
+          {/* <NavLink href="/work" route={router.pathname}>
             Work
-          </NavLink>
+          </NavLink> */}
           <NavLink href="/blog" route={router.pathname}>
             Blog
           </NavLink>
-          <NavLink href="/contact" route={router.pathname}>
+          {/* <NavLink href="/contact" route={router.pathname}>
             Contact
-          </NavLink>
+          </NavLink> */}
         </NavList>
       </Nav>
     </Section>

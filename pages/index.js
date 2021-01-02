@@ -1,13 +1,12 @@
-import Head from "next/head";
-import { createApolloFetch } from "apollo-fetch";
-import Layout from "../components/layout/Layout";
-import Work from "../components/home/Work";
-import Blog from "../components/home/Blog";
-import Hero from "../components/home/Hero";
-import Newsletter from "../components/home/Newsletter";
+import Head from 'next/head';
+import { createApolloFetch } from 'apollo-fetch';
+import Layout from '../components/layout/Layout';
+import Work from '../components/home/Work';
+import Blog from '../components/home/Blog';
+import Hero from '../components/home/Hero';
+import Newsletter from '../components/home/Newsletter';
 
 const Home = ({ projects, posts }) => {
-  console.log(projects);
   return (
     <Layout>
       <Head>
@@ -15,7 +14,7 @@ const Home = ({ projects, posts }) => {
       </Head>
 
       <Hero />
-      <Work projects={projects} />
+      {/* <Work projects={projects} /> */}
       <Blog posts={posts} />
       {/* <Newsletter /> */}
     </Layout>
@@ -26,7 +25,7 @@ export default Home;
 
 export async function getStaticProps() {
   try {
-    const uri = "https://cms.arontolentino.com/graphql";
+    const uri = 'https://cms.arontolentino.com/graphql';
 
     const query = `
 			query Home {
@@ -62,6 +61,10 @@ export async function getStaticProps() {
 									node {
 										name
 										slug
+										color {
+											text
+											background
+										}
 									}
 								}
 							}

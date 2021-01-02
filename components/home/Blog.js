@@ -1,17 +1,17 @@
-import React from "react";
-import SectionTitle from "../layout/SectionTitle";
-import styled from "styled-components";
-import Post from "../Post";
-import PrimaryBtn from "../layout/PrimaryBtn";
+import React from 'react';
+import SectionTitle from '../layout/SectionTitle';
+import styled from 'styled-components';
+import Post from '../Post';
+import PrimaryBtn from '../layout/PrimaryBtn';
 
-const Section = styled("section")`
+const Section = styled('section')`
   position: relative;
   display: flex;
   flex-direction: column;
   margin-bottom: 10rem;
 `;
 
-const ArticleList = styled("ol")`
+const ArticleList = styled('ol')`
   list-style: none;
   display: flex;
   flex-wrap: wrap;
@@ -19,7 +19,7 @@ const ArticleList = styled("ol")`
   margin-bottom: 5rem;
 `;
 
-const Article = styled("li")`
+const Article = styled('li')`
   flex: 0 0 48.5%;
   display: flex;
   justify-content: space-between;
@@ -40,7 +40,7 @@ const Article = styled("li")`
   }
 `;
 
-const Content = styled("a")`
+const Content = styled('a')`
   min-height: 19rem;
 
   h3 {
@@ -66,7 +66,7 @@ const Content = styled("a")`
   }
 `;
 
-const Meta = styled("div")`
+const Meta = styled('div')`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -81,7 +81,7 @@ const Meta = styled("div")`
   }
 `;
 
-const Date = styled("p")`
+const Date = styled('p')`
   font-size: 1.8rem;
   margin-bottom: 2rem;
 
@@ -90,11 +90,11 @@ const Date = styled("p")`
   }
 `;
 
-const Tag = styled("a")`
+const Tag = styled('a')`
   font-size: 1.4rem;
   font-weight: 700;
-  color: #fff;
-  background: blue;
+  color: ${(props) => props.text};
+  background: ${(props) => props.background};
   padding: 1.5rem 2rem;
 
   @media only screen and (max-width: 500px) {
@@ -102,7 +102,7 @@ const Tag = styled("a")`
   }
 `;
 
-const BtnContainer = styled("div")`
+const BtnContainer = styled('div')`
   display: flex;
   justify-content: flex-end;
 `;
@@ -132,7 +132,11 @@ const Blog = ({ posts }) => {
               <Meta>
                 <Date>August 20, 2020</Date>
                 <div>
-                  <Tag href={`/tags/${tags.edges[0].node.slug}`}>
+                  <Tag
+                    href={`/tags/${tags.edges[0].node.slug}`}
+                    background={tags.edges[0].node.color.background}
+                    text={tags.edges[0].node.color.text}
+                  >
                     {tags.edges[0].node.name}
                   </Tag>
                 </div>

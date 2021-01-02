@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import { createApolloFetch } from "apollo-fetch";
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import { createApolloFetch } from 'apollo-fetch';
 
-const Aside = styled("aside")`
+const Aside = styled('aside')`
   flex: 0 0 24rem;
 
   h3 {
@@ -14,13 +14,13 @@ const Aside = styled("aside")`
   }
 `;
 
-const Categories = styled("ul")`
+const Tags = styled('ul')`
   display: flex;
   flex-wrap: wrap;
   list-style: none;
 `;
 
-const Category = styled("li")`
+const Tag = styled('li')`
   margin-bottom: 2rem;
   margin-right: 0.75rem;
 
@@ -28,29 +28,22 @@ const Category = styled("li")`
     font-size: 1.4rem;
     font-weight: 700;
     padding: 1rem;
-    background: blue;
-    color: #fff;
+    color: ${(props) => props.text};
+    background: ${(props) => props.background};
   }
 `;
 
 const Sidebar = ({ tags }) => {
   return (
     <Aside>
-      <h3>Intro</h3>
-      <h3>Search</h3>
-
-      <h3>Categories</h3>
-      <Categories>
+      <Tags>
         {tags &&
-          tags.map(({ node: { name, slug } }) => (
-            <Category>
+          tags.map(({ node: { name, slug, color } }) => (
+            <Tag background={color.background} text={color.text}>
               <a href={`/blog/tags/${slug}`}>{name}</a>
-            </Category>
+            </Tag>
           ))}
-      </Categories>
-
-      <h3>Newsletter</h3>
-      <h3>Social Media</h3>
+      </Tags>
     </Aside>
   );
 };
